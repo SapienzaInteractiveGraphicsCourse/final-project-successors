@@ -2,5 +2,5 @@
 
 ## Collaborators 
 Alper Calisir <br>
-Nijat Mursali
+Nijat Mursali <br>
 Yunus Emre Darici
