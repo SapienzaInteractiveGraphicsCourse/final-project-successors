@@ -6,9 +6,11 @@ AroundDIAG is a simple game where you run against time to collect fuels in order
 
 ### Running
 
-You can start playing by cloning the repository and then just opening the index.html.
+Our project is live in this [link](https://sapienzainteractivegraphicscourse.github.io/final-project-successors/)
+
+You can also start playing by cloning the repository and then just opening the index.html.
 ```sh
-$ git clone repo
+$ git clone https://github.com/SapienzaInteractiveGraphicsCourse/final-project-successors.git
 ```
 
 ### Components
