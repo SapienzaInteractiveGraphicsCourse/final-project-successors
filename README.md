@@ -1,34 +1,36 @@
-<h1 align="center">
-<img src="https://logos-download.com/wp-content/uploads/2019/07/Sapienza_Roma_Logo.png"
-      alt="Sapienza" width="80%" />
-</h1>
-
-<h2 align="center">Artificial Intelligence and Robotics</h2>
-
-<h3 align="center">Interactive Graphics</h3>
-
-<h4 align="center">2020 June</h4>
-
-<h4 align="center">Nijat Mursali | 1919669</h4>
-<h4 align="center">Alper Calisir | XXXXXXX</h4>
-<h4 align="center">Yunus Emre Darici | XXXXXXX</h4>
-
-<h4 align="center">PROJECT</h4>
-
----
+# AroundDIAG
+![AroundDIAG](images/aroundDIAG.png)
 
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Development](#development)
-- [Results](#results)
-- [Conclusion](#conclusion)
+AroundDIAG is a simple game where you run against time to collect fuels in order to survive. This project is designed and impelement for the solely purpose of Interactive Graphics course that is offered in Sapienza, University of Rome in 2020 by Marco Schaerf. 
 
+### Running
 
-## Introduction
+You can start playing by cloning the repository and then just opening the index.html.
+```sh
+$ git clone repo
+```
 
-## Development 
+### Components
+- Buildings
+- Trees
+- Fuel
+- House
+- Cars
+- Pole/Street light
+- Traffic light
+- Trash bins
+- Roads
+- Parking lot
 
-## Results 
+### Features 
+- Night/Day Cycle
+- Rain/Snow 
+- Car engine sound 
+- Car horn sound 
+- Back lights 
+- Police Car lights
 
-## Conclusion
+### Todos
+
+ - xx
