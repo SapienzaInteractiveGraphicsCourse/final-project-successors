@@ -1,4 +1,10 @@
 
+
+/*
+*
+* Init functions  
+*
+*/
 function init() {
 
     // set up the scene, the camera and the renderer

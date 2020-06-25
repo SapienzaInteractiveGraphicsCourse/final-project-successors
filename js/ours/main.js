@@ -24,7 +24,7 @@ function loop() {
     });
 
     rainGeo.verticesNeedUpdate = true;
-    rain.rotation.y += 0.002;
+    rain.rotation.y += 0.002; // ROTATE THE RAIN IN Y DIRECTION
 
     // render the scene
     renderer.render(scene, camera);
@@ -57,6 +57,12 @@ function loop() {
     requestAnimationFrame(loop);
 }
 
+//ADDING CONTROLS 
+/**
+ * 
+ * CONTROLS FOR CAR
+ * 
+ */
 
 function addControltoCar() {
     document.addEventListener(

@@ -2,6 +2,12 @@
 var car, fuel, ground, trees = [], poles = [], trafficLight = [], collidableTrees = [], collidablePoles = [], collidableTrafficLight = [], numTrees = 1000, numPoles = 3,
     collidableFuels = [], collidableBuildings = [], collidableBins=[], collidableCars=[];
 
+/*
+*
+* GEOMTERIES
+*
+*/
+
 function BoxGeom(dx, dy, dz, color, x, y, z, notFlatShading) {
     var geom = new THREE.BoxGeometry(dx, dy, dz);
     var mat = new THREE.MeshPhongMaterial({ color: color, flatShading: notFlatShading != true, transparent: true });

@@ -152,11 +152,11 @@ var scene, stats, context,
     camera, fieldOfView, aspectRatio, nearPlane, farPlane, HEIGHT, WIDTH,
     renderer, container;
 
-
+var sunAngle; 
 function DayNightCycle() {
     var onRenderFcts = [];
-    var sunAngle = -1 / 6 * Math.PI * 2;
-    var sunAngle = -3 / 6 * Math.PI * 2;
+    sunAngle = -1 / 6 * Math.PI * 2;
+    sunAngle = -3 / 6 * Math.PI * 2;
     onRenderFcts.push(function (delta, now) {
         var dayDuration = 10;	// nb seconds for a full day cycle
         sunAngle += delta / dayDuration * Math.PI * 2
@@ -203,7 +203,7 @@ function DayNightCycle() {
 
 function RainSnowCycle() {
 
-    var rainCount = 1000;
+    var rainCount = 1400;
     rainGeo = new THREE.Geometry();
     for (var i = 0; i < rainCount; i++) {
         rainDrop = new THREE.Vector3(
@@ -279,6 +279,8 @@ function createScene() {
     //const controls = new THREE.OrbitControls( camera, renderer.domElement );
     //controls.update();
 
+    //Orbit controls doesnt work 
+
     var canvas = document.createElement( 'canvas' );
     canvas.width = 512;
     canvas.height = 512;
@@ -297,6 +299,7 @@ function handleWindowResize() {
     camera.updateProjectionMatrix();
 }
 
+//adding lights for cars and police
 function turnoffLights() {
     headLightLeftLight.visible = false;
     headLightRightLight.visible = false;

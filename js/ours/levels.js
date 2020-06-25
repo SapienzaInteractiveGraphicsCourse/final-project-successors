@@ -1,5 +1,5 @@
 
-
+//creating levels 
 function createLevel() {
 
     addFuelstoScene();
@@ -14,6 +14,7 @@ function createLevel() {
     startTimer();
 }
 
+//ending levels 
 function endLevel() {
     removeFuelsfromScene();
     endBin();

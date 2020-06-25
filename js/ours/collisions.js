@@ -1,4 +1,11 @@
 
+/**
+ * 
+ * 
+ * CHECKING FOR COLLISIONS 
+ * 
+ */
+
 function objCollided() {
     if (objTouchedtoAnother(car.collidable, collidableFuels)) {
         endLevel();
@@ -31,7 +38,11 @@ function getParameters(obj) {  // TODO: annotate
 }
 
 
-
+/**
+ * 
+ * increasing and decreasing heights
+ * 
+ */
 function increaseHeight(obj, duration, dy, scale) { 
     obj.animforObjGrowth_isGrowing = true;
     obj.animforObjGrowth_end_time = duration;
