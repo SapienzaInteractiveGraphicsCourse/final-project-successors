@@ -2,7 +2,7 @@
 ![AroundDIAG](images/aroundDIAG.png)
 
 
-AroundDIAG is a simple game where you run against time to collect fuels in order to survive. This project is designed and impelement for the solely purpose of Interactive Graphics course that is offered in Sapienza, University of Rome in 2020 by Marco Schaerf. 
+AroundDIAG is a simple game where you run against time to collect fuels in order to survive. This project is designed and impelement for the solely purpose of Interactive Graphics course that is offered in Sapienza, University of Rome in 2020 by Prof. Marco Schaerf. 
 
 ### Running
 
