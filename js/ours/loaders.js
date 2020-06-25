@@ -15,7 +15,7 @@ function init() {
     createLevel();
 
     // add controls
-    createControls();
+    addControltoCar();
 
     // reset game
     resetGame();

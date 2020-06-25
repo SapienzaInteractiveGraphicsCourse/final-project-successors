@@ -2,7 +2,7 @@
 
 function createLevel() {
 
-    createFuels();
+    addFuelstoScene();
     createRoads();
     createParkings();
     createBuildings();
@@ -10,17 +10,17 @@ function createLevel() {
     createTrafficLights();
     createBins();
     createCarV2();
-    createTrees();
+    addTreestoScene();
     startTimer();
 }
 
 function endLevel() {
-    endFuels();
+    removeFuelsfromScene();
     endBin();
     endPoles();
     endTrafficLights();
     endBuildings();
-    endTrees();
+    removeTreesfromScene();
     updateStatus();
     stopTimer();
     setTimeout(createLevel, 100);

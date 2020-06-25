@@ -6,35 +6,35 @@
 </head>
 
 <body>
-	<div class="panel" style="z-index:1;">
+	<div class="mainDiv" style="z-index:1;">
 		<h1>
-			<span class="the">Around</span>
-			<span class="title">DIAG</span>
-			<span class="byline">Made for Interactive Graphics Class</span>
+			<span class="around">Around</span>
+			<span class="DIAG">DIAG</span>
+			<span class="madeFor">Made for Interactive Graphics Class</span>
 		</h1>
-		<div class="entries">
-			<div class="entry">
+		<div class="SceneEntries">
+			<div class="SceneEntry">
 				<label>Time</label>
 				<p id="time" class="time">36</p>
 			</div>
-			<div class="entry">
+			<div class="SceneEntry">
 				<label>Fuel</label>
 				<div class="status">
 					<div class="fill" id="fuel"></div>
 				</div>
 			</div>
-			<div class="entry">
+			<div class="SceneEntry">
 				<label>Record</label>
 				<p id="record" class="time">0</p>
 			</div>
-			<div class="entry">
+			<div class="SceneEntry">
 				<label>Score</label>
 				<p id="score" class="time">36</p>
 			</div>
 		</div>
-		<p class="instructions">Use arrow keys to move. Collect fuel to survive!</p>
+		<p class="buttonforInstructions">Try to collect fuels by WASD or arrow keys.</p>
 	</div>
-	<div id="world"></div>
+	<div id="WorldScene"></div>
 
 	<div class="container">
 		<h1 id="gameover"></h1>
@@ -56,13 +56,12 @@
 	crossorigin="anonymous"></script>
 <script src="js/stats.min.js"></script>
 <script type="text/javascript" src="js/three.min.js"></script>
-<script type="text/javascript" src="js/threex.daynight.js"></script>
-<script src="js/OrbitControls.js"></script>
-<script src="js/scene.js"></script>
-<script src="js/levels.js"></script>
-<script src="js/loaders.js"></script>
-<script src="js/models.js"></script>
-<script src="js/collisions.js"></script>
-<script src="js/main.js"></script>
+<script type="text/javascript" src="js/ours/threex.daynight.js"></script>
+<script src="js/ours/scene.js"></script>
+<script src="js/ours/levels.js"></script>
+<script src="js/ours/loaders.js"></script>
+<script src="js/ours/models.js"></script>
+<script src="js/ours/collisions.js"></script>
+<script src="js/ours/main.js"></script>
 
 </html>

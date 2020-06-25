@@ -10,8 +10,8 @@ function loop() {
     //console.log(car.mesh.position);
 
     // handle all growth animations
-    animateGrow();
-    animateShrink();
+    animationforObjGrowth();
+    animationforObjShrink();
 
     rainGeo.vertices.forEach(r => {
         r.velocity -=0.1 + Math.random() * 0.1;
@@ -31,7 +31,7 @@ function loop() {
     scene.rotation.y = 0.0025; // change camera rotation if you would like 
     camera.lookAt(car.mesh.position);
     // check global collisions
-    checkCollisions();
+    objCollided();
 
     //stats is added here 
     var time = performance.now() / 1000;
@@ -58,25 +58,25 @@ function loop() {
 }
 
 
-function createControls() {
+function addControltoCar() {
     document.addEventListener(
         'keydown',
         function (ev) {
             key = ev.keyCode;
 
             if (key == 37 || key == 65) { // checking for both left and A key
-                car.turnLeft();
+                car.TurnCarLeft();
             }
             if (key == 39 || key == 68) { // checking for both right and D key
-                car.turnRight();
+                car.TurnCarRight();
             }
             if (key == 38 || key == 87) {
-                car.moveForward();
+                car.moveCarForward();
 
                 //start engine sound 
             }
             if (key == 40 || key == 83) {
-                car.moveBackward();
+                car.moveCarBackward();
 
             }
             if (key == 27) { // pause menu 
@@ -106,19 +106,19 @@ function createControls() {
             key = ev.keyCode;
 
             if (key == 37 || key == 65) {
-                car.stopLeft();
+                car.StopCarLeft();
             }
             if (key == 39 || key == 68) {
-                car.stopRight();
+                car.StopCarRight();
             }
             if (key == 38 || key == 87) {
-                car.stopForward();
+                car.stopCarForward();
                 //car 
                 Wpushed = false;
                 createCarEngineSound(Wpushed);
             }
             if (key == 40 || key == 83) {
-                car.stopBackward();
+                car.stopCarBackward();
             }
             if (key == 72) {
                 // horn sound stop 

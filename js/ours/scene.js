@@ -272,7 +272,7 @@ function createScene() {
 
     renderer.setSize(WIDTH, HEIGHT);
     renderer.shadowMap.enabled = true;
-    container = document.getElementById('world');
+    container = document.getElementById('WorldScene');
     container.appendChild(renderer.domElement);
     window.addEventListener('resize', handleWindowResize, false);
 
