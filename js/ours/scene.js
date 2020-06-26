@@ -101,7 +101,7 @@ function createCarEngineSound(isGoing) {
 
 var hemisphereLight, shadowLight;
 
-function createLights() {
+function createSceneLights() {
 
     hemisphereLight = new THREE.HemisphereLight(0xaaaaaa, 0x000000, .9)
 
@@ -123,6 +123,30 @@ function createLights() {
     //handle lights 
     //scene.add(hemisphereLight);
     scene.add(shadowLight);
+}
+
+function createObjectLights() {
+    //handle police car lights 
+    redlight = new THREE.PointLight( 0xfc0303, 1, 100 );
+    redlight.position.set(100, 0, 100 );
+    scene.add(redlight);
+    //this.mesh.add(redlight);
+
+    bluelight = new THREE.PointLight( 0x3300FF, 20, 100 );
+    bluelight.position.set(40, 79, -10 );
+    scene.add(bluelight);
+    //this.mesh.add(bluelight);
+
+    //pole light
+    var pointligghtPole = new THREE.PointLight(Colors.red, 100, 100);
+    pointligghtPole.position.set(-60, 86, -40);
+    scene.add(pointligghtPole);
+    //headLightLeftLight.visible=false;
+    //this.mesh.add(pointligghtPole);
+
+    //traffic lights 
+    var light = new THREE.PointLight(Colors.red, 1, 100);
+    light.position.set(4, 95, 10);
 }
 
 var LightButtonPushedDown;

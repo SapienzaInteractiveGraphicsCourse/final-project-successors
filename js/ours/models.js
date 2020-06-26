@@ -300,17 +300,6 @@ function PoliceCar() {
     this.mesh.add(meshBody);
     this.mesh.add(meshRoof);
 
-    redlight = new THREE.PointLight( 0xfc0303, 20, 100 );
-    redlight.position.set(40, 79, 29 );
-    this.mesh.add(redlight);
-
-    bluelight = new THREE.PointLight( 0x3300FF, 20, 100 );
-    bluelight.position.set(40, 79, -10 );
-    this.mesh.add(bluelight);
-
-
- 
-
     this.mesh.add(signal1);
     this.mesh.add(signal2);
 
@@ -593,10 +582,7 @@ function Pole() {
 
     pole1.rotation.z = (Math.PI/2) - 45;
 
-    var pointligghtPole = new THREE.PointLight(Colors.red, 100, 100);
-    pointligghtPole.position.set(30, 86, -40);
-    //headLightLeftLight.visible=false;
-    this.mesh.add(pointligghtPole);
+    
 
     this.mesh.add(meshBody);
     this.mesh.add(pole);
@@ -629,15 +615,14 @@ function TrafficLight() {
     var yellow = BoxGeom(5, 5, 2, Colors.yellow, 0, 85, 10);
     var green = BoxGeom(5, 5, 2, Colors.green, 0, 75, 10);
 
-    var light = new THREE.PointLight(Colors.red, 1, 100);
-    light.position.set(4, 95, 10);
+
 
     this.mesh.add(meshBody0);
     this.mesh.add(meshBody);
     this.mesh.add(red);
     this.mesh.add(yellow);
     this.mesh.add(green);
-    this.mesh.add(light);
+    //this.mesh.add(light);
 
     this.collidable = meshBody0;
 

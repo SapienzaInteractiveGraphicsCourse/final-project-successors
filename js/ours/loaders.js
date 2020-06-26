@@ -11,7 +11,10 @@ function init() {
     createScene();
 
     // add the lights
-    createLights();
+    createSceneLights();
+
+    //add object lights 
+    createObjectLights();
 
     //add the sounds 
     createForestSound();
