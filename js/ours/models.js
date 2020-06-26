@@ -1,6 +1,6 @@
 
-var car, fuel, ground, trees = [], poles = [], trafficLight = [], collidableTrees = [], collidablePoles = [], collidableTrafficLight = [], numTrees = 1000, numPoles = 3,
-    collidableFuels = [], collidableBuildings = [], collidableBins=[], collidableCars=[];
+var  trees = [], poles = [], trafficLight = [], collidableTrees = [], collidablePoles = [], collidableTrafficLight = [], numTrees = 1000, numPoles = 3,
+    collidableFuels = [], collidableBuildings = [], collidableBins=[], collidableCars=[], car, fuel, ground;
 
 /*
 *
@@ -668,9 +668,6 @@ function createGround() {
     ground = BoxGeom(5000, 20, 5000, Colors.greenDark, 0, -10, 0);
     scene.add(ground);
 }
-
-
-
 
 
 /**

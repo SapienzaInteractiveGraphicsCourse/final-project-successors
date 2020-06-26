@@ -2,11 +2,13 @@
 
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-	<div class="mainDiv" style="z-index:1;">
+	<div id="mainDiv" style="z-index:1;">
 		<h1>
 			<span class="around">Around</span>
 			<span class="DIAG">DIAG</span>
@@ -33,16 +35,17 @@
 			</div>
 		</div>
 		<p class="buttonforInstructions">Try to collect fuels by WASD or arrow keys.</p>
+		<button type="button" class="btn btn-secondary" id="instructionbutton"></button>
 	</div>
 	<div id="WorldScene"></div>
 
-	<div class="container">
+	<div class="centeredDiv">
 		<h1 id="gameover"></h1>
 	</div>
 
-	<div class="container">
+	<div class="centeredDiv">
 		<h1 id="pausemenu"></h1>
-		
+
 	</div>
 </body>
 <!-- ADD JAVASCRIPT ALL HERE -->

@@ -18,7 +18,7 @@ html, body {
 	overflow: hidden;
 }
 
-.mainDiv {
+#mainDiv {
     color: black;
     background-color: rgb(233, 196, 31);
     border-radius: 10px;
@@ -26,7 +26,7 @@ html, body {
     top:0;
     left:0;
     padding:2em 3em;
-    width:15em;
+    width:25em;
 }
 
 h1 {
@@ -129,7 +129,7 @@ h1 .madeFor {
     line-height:150%;
 }
 
-div.container {
+div.centeredDiv {
     height: 10em;
     display: flex;
     align-items: center;
@@ -162,4 +162,9 @@ div.container {
 
 #pausemenu h3 {
 
+}
+
+#instructionbutton {
+    margin-left: 100px;
+    margin-right: auto;
 }

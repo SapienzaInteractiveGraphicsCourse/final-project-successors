@@ -17,10 +17,10 @@ function createLevel() {
 //ending levels 
 function endLevel() {
     removeFuelsfromScene();
-    endBin();
-    endPoles();
-    endTrafficLights();
-    endBuildings();
+    //endBin();
+    //endPoles();
+    //endTrafficLights();
+    //endBuildings();
     removeTreesfromScene();
     updateStatus();
     stopTimer();
@@ -122,8 +122,6 @@ var fuelLeft;
 function updateStatus() {
     fuelLeft = Math.min(100, fuelLeft + 25);
     updateFuelDisplay();
-
-    // added in step 3
     score += 1;
     updateScoreDisplay();
 }
@@ -134,17 +132,31 @@ var record = window.localStorage.getItem('record', 0);
 
 
 function updateTimeDisplay() {
-    document.getElementById('time').innerHTML = time;
+    $("#time").html(time);
 }
 
+function getInstructions() {
+    $("#instructionbutton").html("Instructions");
+    $("#instructionbutton").click(function(){
+        alert("Wow, you clicked me");
+    })
+}
+
+getInstructions();
+
 function updateFuelDisplay() {
+    console.log(fuelLeft);
+    //adding fuel to id
     document.getElementById('fuel').style.width = fuelLeft.toString() + '%';
 }
 
 function updateScoreDisplay() {
-    document.getElementById('score').innerHTML = score;
+    $("#score").html(score);
 }
 
 function updateRecordDisplay() {
-    document.getElementById('record').innerHTML = record;
+    $("#record").html(record);
 }
+
+
+

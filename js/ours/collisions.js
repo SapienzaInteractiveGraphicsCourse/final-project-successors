@@ -107,3 +107,21 @@ function animationforObjShrink() {
         }
     }
 }
+
+//adding collisions for other objects 
+//
+function CollideOthers() {
+    if(objTouchedtoAnother(car.collidable, collidableBuildings) || 
+        objTouchedtoAnother(car.collidable, collidablePoles) || 
+            objTouchedtoAnother(car.collidable, collidableBuildings) || 
+                objTouchedtoAnother(car.collidable, collidableCars) || 
+                    objTouchedtoAnother(car.collidable, collidableBins) || 
+                        objTouchedtoAnother(car.collidable, collidablePoles) || 
+                            objTouchedtoAnother(car.collidable, collidableTrafficLight) || 
+                                objTouchedtoAnother(car.collidable, collidableTrees))
+    //collide 
+    return true;
+    else {
+        return false;
+    }
+}
