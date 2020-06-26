@@ -35,3 +35,6 @@ $ git clone https://github.com/SapienzaInteractiveGraphicsCourse/final-project-s
 - Back lights 
 - Police Car lights
 
+
+## Optimization
+- fixed the FPS issue that was dropping too fast in game.
