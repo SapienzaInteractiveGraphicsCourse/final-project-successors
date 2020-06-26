@@ -149,9 +149,14 @@ function MainCar() {
         // update speed according to maxAcceleration
         if (movement.forward) {
             currentCarSpeed = Math.min(maxSpeed, currentCarSpeed + maxAcceleration);
+            isCarGoing = true;
+            createCarEngineSound();
         } else if (movement.backward) {
             currentCarSpeed = Math.max(-maxSpeed, currentCarSpeed - maxAcceleration);
+            isCarGoing = true;
+            createCarEngineSound();
         }
+        isCarGoing = false;
 
         // update current position based on speed
         if (isCarMoving) {

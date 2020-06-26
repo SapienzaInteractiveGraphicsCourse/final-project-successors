@@ -13,6 +13,14 @@ function loop() {
     animationforObjGrowth();
     animationforObjShrink();
 
+    // if(isRaining) {
+    //     RainSnowCycle(); //execute the rain 
+    // }
+    // else {
+    //     //rainGeo.visible = false;
+    // }
+    if(isRaining) {
+        rainGeo.visible = true;
     rainGeo.vertices.forEach(r => {
         r.velocity -=0.1 + Math.random() * 0.1;
         r.y += r.velocity;
@@ -22,9 +30,14 @@ function loop() {
             r.velocity = 0;
         }
     });
+        
 
     rainGeo.verticesNeedUpdate = true;
     rain.rotation.y += 0.002; // ROTATE THE RAIN IN Y DIRECTION
+    }else {
+        rainGeo.visible = false;
+    }
+
 
     // render the scene
     renderer.render(scene, camera);
@@ -64,6 +77,8 @@ function loop() {
  * 
  */
 
+
+var isDayorNight = 0; 
 function addControltoCar() {
     document.addEventListener(
         'keydown',
@@ -88,10 +103,35 @@ function addControltoCar() {
             if (key == 27) { // pause menu 
                 pauseMenu();
             }
+            if(key == 82) {
+                //check if raining
+                isRaining = !isRaining;
+                console.log(isRaining);
+            }
+            if(key == 73) {
+                //instructions shown
+                instructionText();
+                isInstrShown = !isInstrShown; 
+            }
 
             if (key == 72) { // if H is pushed 
                 //horn sound start 
                 createCarHornSound();
+            }
+            if(key == 78) {
+                //night or day
+                if(isDayorNight == 0) {
+                    shadowLight.intensity = 0.9;
+                    WorldScene.style.setProperty("background", "#B9DBE3");
+                    isDayorNight=1;
+                }
+                else if(isDayorNight == 1) {
+                    shadowLight.intensity = 0.0;
+                    WorldScene.style.setProperty("background", "#000");
+                    isDayorNight = 0;
+                }
+                console.log(isDayorNight);
+
             }
             if (key == 69) {
                 //car engine start 

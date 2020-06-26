@@ -29,21 +29,10 @@ function endLevel() {
 
 function pauseMenu() {
     console.log("This is for testing.");
-
-    car.stopForward();
-    car.stopBackward();
-    car.stopLeft();
-    car.stopRight();
     var paused = "Pause Menu";
-
-    //add car movable or not 
 
     $("#pausemenu").html(paused);
     $("#pausemenu").css({"padding":"20px"});
-
-    $("#pausemenu").append("<div class='btn-group-vertical'>")
-    $("#pausemenu").append("<button id='btn'>"+ "Resume" + "</button>");
-    $("#pausemenu").append("<button id='btn'>"+ "Instructions" + "</button>");
 
     $("#btn").click(function(){
         $("#pausemenu").html("Resumed!");
@@ -52,11 +41,6 @@ function pauseMenu() {
     setTimeout(function () {
         $("#pausemenu").fadeOut(1000);
     }, 2000);
-
-    car.moveForward();
-    car.moveBackward();
-    car.turnLeft();
-    car.turnRight();
 }
 
 
@@ -131,26 +115,35 @@ function updateTimeDisplay() {
     $("#time").html(time);
 }
 
+
+var isInstrShown = true; 
 function getInstructions() {
-    $("#instructionbutton").html("Instructions");
+    $("#instructionbutton").html("PRESS I OR HERE");
     $("#instructionbutton").click(function(){
         //alert("Wow, you clicked me");
+        isInstrShown = !isInstrShown;
         instructionText();
-    })
+    });
 }
 
 function instructionText() {
 
-    $("#instructionText").append("<p>Press 'H' to enable car horn sound</p>");
-    $("#instructionText").append("<p>Press 'E' to enable car engine start sound</p>");
-    $("#instructionText").append("<button id='close'>" + "Close" + "</button>");
-    
-    $("#close").click(function(){
-        setTimeout(function () {
-            $("#instructionText").fadeOut(1000);
-        }, 500);
-    });
-    
+    if(isInstrShown) {
+        $("#instructionText").append("<p>Press 'H' to enable car horn sound</p>");
+        $("#instructionText").append("<p>Press 'E' to enable car engine start sound</p>");
+        $("#instructionText").append("<p>Press 'R' to enable rain&snow.</p>");
+        $("#instructionText").append("<p>Press 'N' to enable day&night.</p>");
+        //$("#instructionText").append("<button id='close'>" + "Close" + "</button>");
+        
+        $("#close").click(function(){
+            setTimeout(function () {
+                $("#instructionText").fadeOut(1000);
+            }, 500);
+        });
+    }    
+    else if(!isInstrShown) {
+        $("#instructionText").html("");
+    }
 
 }
 

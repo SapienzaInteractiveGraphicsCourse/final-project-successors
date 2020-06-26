@@ -1,6 +1,6 @@
 var Colors = {
     red: 0xf25346,
-    black:0x000000,
+    black: 0x000000,
     white: 0xd8d0d1,
     brown: 0x59332e,
     brownDark: 0x23190f,
@@ -30,20 +30,20 @@ var Colors = {
  * Utilities for applying sounds in scene
  */
 
-
+var ForestSound, EngineStartSound, CarHornSound, CarEngineSound;
 var inGameSound;
 function createForestSound() {
     var listener = new THREE.AudioListener();
     camera.add(listener);
 
-    var sound = new THREE.Audio(listener);
+    ForestSound = new THREE.Audio(listener);
 
     inGameSound = new THREE.AudioLoader();
     inGameSound.load('sounds/forest.mp3', function (buffer) {
-        sound.setBuffer(buffer);
-        sound.setLoop(true);
-        sound.setVolume(0.5);
-        sound.play();
+        ForestSound.setBuffer(buffer);
+        ForestSound.setLoop(true);
+        ForestSound.setVolume(0.5);
+        ForestSound.play();
     });
     //console.log("Sounds is working!");
 }
@@ -53,14 +53,14 @@ function createEngineStartSound() {
     var listener = new THREE.AudioListener();
     camera.add(listener);
 
-    var sound = new THREE.Audio(listener);
+    EngineStartSound = new THREE.Audio(listener);
 
     inGameSound = new THREE.AudioLoader();
     inGameSound.load('sounds/car-start.wav', function (buffer) {
-        sound.setBuffer(buffer);
-        sound.setLoop(false);
-        sound.setVolume(0.5);
-        sound.play();
+        EngineStartSound.setBuffer(buffer);
+        EngineStartSound.setLoop(false);
+        EngineStartSound.setVolume(0.5);
+        EngineStartSound.play();
     });
 }
 
@@ -68,33 +68,36 @@ function createCarHornSound() {
     var listener = new THREE.AudioListener();
     camera.add(listener);
 
-    var sound = new THREE.Audio(listener);
+    CarHornSound = new THREE.Audio(listener);
 
     inGameSound = new THREE.AudioLoader();
     inGameSound.load('sounds/car-horn.wav', function (buffer) {
-        sound.setBuffer(buffer);
-        sound.setLoop(false);
-        sound.setVolume(0.2);
-        sound.play();
+        CarHornSound.setBuffer(buffer);
+        CarHornSound.setLoop(false);
+        CarHornSound.setVolume(0.2);
+        CarHornSound.play();
     });
 }
 
-function createCarEngineSound(isGoing) {
+var isCarGoing = false;
+function createCarEngineSound() {
 
-    if (isGoing == true) {
+    if (isCarGoing) {
         var listener = new THREE.AudioListener();
         camera.add(listener);
 
-        var sound = new THREE.Audio(listener);
+        CarEngineSound = new THREE.Audio(listener);
 
         inGameSound = new THREE.AudioLoader();
         inGameSound.load('sounds/car-drive.mp3', function (buffer) {
-            sound.setBuffer(buffer);
-            sound.setLoop(false);
-            sound.setVolume(0.1);
-            sound.play();
+            CarEngineSound.setBuffer(buffer);
+            CarEngineSound.setLoop(false);
+            CarEngineSound.setVolume(0.1);
+            CarEngineSound.play();
         });
-    } else {
+    }
+    else if(!isCarGoing) {
+        CarEngineSound.setVolume(0);
     }
 
 }
@@ -127,19 +130,19 @@ function createSceneLights() {
 
 function createObjectLights() {
     //handle police car lights 
-    redlight = new THREE.PointLight( 0xfc0303, 2, 100 );
-    redlight.position.set(350, 50, -320 );
+    redlight = new THREE.PointLight(0xfc0303, 2, 100);
+    redlight.position.set(350, 50, -320);
     scene.add(redlight);
     // //this.mesh.add(redlight);
 
-    bluelight = new THREE.PointLight( 0x3300FF, 2, 100 );
-    bluelight.position.set(350, 50, -280 );
+    bluelight = new THREE.PointLight(0x3300FF, 2, 100);
+    bluelight.position.set(350, 50, -280);
     bluelight.rotation.set(0, 90, 0);
     scene.add(bluelight);
     //this.mesh.add(bluelight);
 
     //pole light
-    var pointligghtPole = new THREE.PointLight( Colors.yellow, 2, 100 );
+    var pointligghtPole = new THREE.PointLight(Colors.yellow, 2, 100);
     pointligghtPole.position.set(-80, 70, 70);
     pointligghtPole.rotation.set(0, 45, 0);
     // var pointligghtPole = new THREE.SpotLight( Colors.yellow );
@@ -149,7 +152,7 @@ function createObjectLights() {
     //pointligghtPole.target = pole;
     //pointligghtPole.rotation.z = (Math.PI/2) +135;
 
-    scene.add( pointligghtPole );
+    scene.add(pointligghtPole);
     //headLightLeftLight.visible=false;
     //this.mesh.add(pointligghtPole);
 
@@ -187,57 +190,11 @@ var scene, stats, context,
     camera, fieldOfView, aspectRatio, nearPlane, farPlane, HEIGHT, WIDTH,
     renderer, container;
 
-var sunAngle; 
-function DayNightCycle() {
-    var onRenderFcts = [];
-    sunAngle = -1 / 6 * Math.PI * 2;
-    sunAngle = -3 / 6 * Math.PI * 2;
-    onRenderFcts.push(function (delta, now) {
-        var dayDuration = 10;	// nb seconds for a full day cycle
-        sunAngle += delta / dayDuration * Math.PI * 2
-    })
-
-    var sunSphere = new THREEx.DayNight.SunSphere();
-    var sunLight = new THREEx.DayNight.SunLight();
-    var skydom = new THREEx.DayNight.Skydom();
-
-    scene.add(sunSphere.object3d);
-    scene.add(sunLight.object3d);
-    scene.add(skydom.object3d);
-
-    onRenderFcts.push(function (delta, now) {
-        sunSphere.update(sunAngle);
-    });
-    onRenderFcts.push(function (delta, now) {
-        sunLight.update(sunAngle);
-    });
-    onRenderFcts.push(function (delta, now) {
-        skydom.update(sunAngle);
-    });
-
-
-    onRenderFcts.push(function () {
-        renderer.render(scene, camera);
-    })
-
-    var lastTimeMsec = null
-    requestAnimationFrame(function animate(nowMsec) {
-        // keep looping
-        requestAnimationFrame(animate);
-        // measure time
-        lastTimeMsec = lastTimeMsec || nowMsec - 1000 / 60
-        var deltaMsec = Math.min(200, nowMsec - lastTimeMsec)
-        lastTimeMsec = nowMsec
-        // call each update function
-        onRenderFcts.forEach(function (onRenderFct) {
-            onRenderFct(deltaMsec / 1000, nowMsec / 1000);
-        })
-    })
-
-}
+var isRaining = false;
 
 function RainSnowCycle() {
-
+    //var rainGeo;
+    //if(isRaining) {
     var rainCount = 1400;
     rainGeo = new THREE.Geometry();
     for (var i = 0; i < rainCount; i++) {
@@ -260,6 +217,8 @@ function RainSnowCycle() {
     rain = new THREE.Points(rainGeo, rainMaterial);
     rain.position.set(0, 200, 500);
     scene.add(rain);
+
+
     //camera.add(rain);
 
     //console.log(rain.position);
@@ -288,11 +247,11 @@ function createScene() {
     );
 
     RainSnowCycle();
-    DayNightCycle();
+    //DayNightCycle();
 
     //stats 
-	stats.showPanel( 0 );
-	document.body.appendChild( stats.dom );
+    stats.showPanel(0);
+    document.body.appendChild(stats.dom);
 
     // Set the position of the camera
     camera.position.set(0, 400, 400);
@@ -316,12 +275,12 @@ function createScene() {
 
     //Orbit controls doesnt work 
 
-    var canvas = document.createElement( 'canvas' );
+    var canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 512;
-    document.body.appendChild( canvas );
+    document.body.appendChild(canvas);
 
-    context = canvas.getContext( '2d' );
+    context = canvas.getContext('2d');
     context.fillStyle = 'rgba(127,0,255,0.05)';
 }
 
@@ -353,5 +312,5 @@ function turnonPoliceLights() {
 function turnoffPoliceLights() {
     redlight.visible = false;
     bluelight.visible = false;
-    
+
 }
