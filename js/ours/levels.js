@@ -6,8 +6,8 @@ function createLevel() {
     createRoads();
     createParkings();
     createBuildings();
-    //createPoles();
-    //createTrafficLights();
+    createPoles();
+    createTrafficLights();
     createBins();
     createCarV2();
     addTreestoScene();
