@@ -127,26 +127,37 @@ function createSceneLights() {
 
 function createObjectLights() {
     //handle police car lights 
-    redlight = new THREE.PointLight( 0xfc0303, 1, 100 );
-    redlight.position.set(100, 0, 100 );
+    redlight = new THREE.PointLight( 0xfc0303, 2, 100 );
+    redlight.position.set(350, 50, -320 );
     scene.add(redlight);
-    //this.mesh.add(redlight);
+    // //this.mesh.add(redlight);
 
-    bluelight = new THREE.PointLight( 0x3300FF, 20, 100 );
-    bluelight.position.set(40, 79, -10 );
+    bluelight = new THREE.PointLight( 0x3300FF, 2, 100 );
+    bluelight.position.set(350, 50, -280 );
+    bluelight.rotation.set(0, 90, 0);
     scene.add(bluelight);
     //this.mesh.add(bluelight);
 
     //pole light
-    var pointligghtPole = new THREE.PointLight(Colors.red, 100, 100);
-    pointligghtPole.position.set(-60, 86, -40);
-    scene.add(pointligghtPole);
+    var pointligghtPole = new THREE.PointLight( Colors.yellow, 2, 100 );
+    pointligghtPole.position.set(-80, 70, 70);
+    pointligghtPole.rotation.set(0, 45, 0);
+    // var pointligghtPole = new THREE.SpotLight( Colors.yellow );
+    // pointligghtPole.position.set(-70, 50, 70);
+    // pointligghtPole.rotation.set(0, 135, 0);
+    // pointligghtPole.castShadow = true;
+    //pointligghtPole.target = pole;
+    //pointligghtPole.rotation.z = (Math.PI/2) +135;
+
+    scene.add( pointligghtPole );
     //headLightLeftLight.visible=false;
     //this.mesh.add(pointligghtPole);
 
     //traffic lights 
-    var light = new THREE.PointLight(Colors.red, 1, 100);
-    light.position.set(4, 95, 10);
+    var light = new THREE.PointLight(Colors.green, 20, 100);
+    light.position.set(-80, 75, -200);
+    light.rotation.set(0, 0, 90);
+    scene.add(light);
 }
 
 var LightButtonPushedDown;

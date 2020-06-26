@@ -594,6 +594,7 @@ function Pole() {
 /**
  * Creates pole according to specifications
  */
+var pole;
 function createPole(x, z, rotation) {
     pole = new Pole();
     pole.mesh.position.set(x, 0, z);
