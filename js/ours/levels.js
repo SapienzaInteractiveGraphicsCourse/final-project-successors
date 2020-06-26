@@ -6,8 +6,8 @@ function createLevel() {
     createRoads();
     createParkings();
     createBuildings();
-    createPoles();
-    createTrafficLights();
+    //createPoles();
+    //createTrafficLights();
     createBins();
     createCarV2();
     addTreestoScene();
@@ -62,11 +62,7 @@ function pauseMenu() {
 
 function resetGame() {
     car.reset();
-
-    // added in step 1
     resetTimer();
-
-    // added in step 2
     fuelLeft = 100;
 
     // added in step 3
@@ -138,8 +134,24 @@ function updateTimeDisplay() {
 function getInstructions() {
     $("#instructionbutton").html("Instructions");
     $("#instructionbutton").click(function(){
-        alert("Wow, you clicked me");
+        //alert("Wow, you clicked me");
+        instructionText();
     })
+}
+
+function instructionText() {
+
+    $("#instructionText").append("<p>Press 'H' to enable car horn sound</p>");
+    $("#instructionText").append("<p>Press 'E' to enable car engine start sound</p>");
+    $("#instructionText").append("<button id='close'>" + "Close" + "</button>");
+    
+    $("#close").click(function(){
+        setTimeout(function () {
+            $("#instructionText").fadeOut(1000);
+        }, 500);
+    });
+    
+
 }
 
 getInstructions();
