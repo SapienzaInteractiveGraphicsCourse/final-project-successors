@@ -52,8 +52,8 @@ var redlight, bluelight;
 function MainCar() {
 
     var direction = new THREE.Vector3(1., 0., 0.);
-    var maxSpeed = 30.;
-    var maxAcceleration = 2;
+    var maxSpeed = 20.;
+    var maxAcceleration = 0.5;
     var currentCarSpeed = 0;
     var carSteeringAngle = Math.PI / 24;
 

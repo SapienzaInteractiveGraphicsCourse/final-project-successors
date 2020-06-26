@@ -122,11 +122,20 @@ function addControltoCar() {
                 //night or day
                 if(isDayorNight == 0) {
                     shadowLight.intensity = 0.9;
+                    //redlight, bluelight, pointligghtPole, light;
+                    redlight.intensity=0.0;
+                    bluelight.intensity=0.0;
+                    pointligghtPole.intensity=0.0;
+                    light.intensity=0.0;
                     WorldScene.style.setProperty("background", "#B9DBE3");
                     isDayorNight=1;
                 }
                 else if(isDayorNight == 1) {
                     shadowLight.intensity = 0.0;
+                    redlight.intensity=1.0;
+                    bluelight.intensity=1.0;
+                    pointligghtPole.intensity=1.0;
+                    light.intensity=1.0;
                     WorldScene.style.setProperty("background", "#000");
                     isDayorNight = 0;
                 }

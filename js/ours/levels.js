@@ -90,10 +90,12 @@ function updateTimer() {
 
 function resetTimer() {
     stopTimer();
+    //add the jquery element here to reset timers
     startTimer();
 }
 
 function stopTimer() {
+    //add jquery instead of function 
     clearInterval(timer);
 }
 

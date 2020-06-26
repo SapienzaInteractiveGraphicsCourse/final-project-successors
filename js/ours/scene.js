@@ -127,7 +127,7 @@ function createSceneLights() {
     //scene.add(hemisphereLight);
     scene.add(shadowLight);
 }
-
+var redlight, bluelight, pointligghtPole, light;
 function createObjectLights() {
     //handle police car lights 
     redlight = new THREE.PointLight(0xfc0303, 2, 100);
@@ -142,7 +142,7 @@ function createObjectLights() {
     //this.mesh.add(bluelight);
 
     //pole light
-    var pointligghtPole = new THREE.PointLight(Colors.yellow, 2, 100);
+    pointligghtPole = new THREE.PointLight(Colors.yellow, 2, 100);
     pointligghtPole.position.set(-80, 70, 70);
     pointligghtPole.rotation.set(0, 45, 0);
     // var pointligghtPole = new THREE.SpotLight( Colors.yellow );
@@ -157,10 +157,15 @@ function createObjectLights() {
     //this.mesh.add(pointligghtPole);
 
     //traffic lights 
-    var light = new THREE.PointLight(Colors.green, 20, 100);
+    light = new THREE.PointLight(Colors.green, 20, 100);
     light.position.set(-80, 75, -200);
     light.rotation.set(0, 0, 90);
     scene.add(light);
+
+    redlight.intensity=0.0;
+    bluelight.intensity=0.0;
+    pointligghtPole.intensity=0.0;
+    light.intensity=0.0;
 }
 
 var LightButtonPushedDown;
@@ -276,8 +281,8 @@ function createScene() {
     //Orbit controls doesnt work 
 
     var canvas = document.createElement('canvas');
-    canvas.width = 512;
-    canvas.height = 512;
+    canvas.width = 256;
+    canvas.height = 256;
     document.body.appendChild(canvas);
 
     context = canvas.getContext('2d');
