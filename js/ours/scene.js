@@ -96,7 +96,7 @@ function createCarEngineSound() {
             CarEngineSound.play();
         });
     }
-    else if(!isCarGoing) {
+    else if (!isCarGoing) {
         CarEngineSound.setVolume(0);
     }
 
@@ -162,10 +162,10 @@ function createObjectLights() {
     light.rotation.set(0, 0, 90);
     scene.add(light);
 
-    redlight.intensity=0.0;
-    bluelight.intensity=0.0;
-    pointligghtPole.intensity=0.0;
-    light.intensity=0.0;
+    redlight.intensity = 0.0;
+    bluelight.intensity = 0.0;
+    pointligghtPole.intensity = 0.0;
+    light.intensity = 0.0;
 }
 
 var backLightOn = false;
@@ -295,24 +295,29 @@ function handleWindowResize() {
 
 function turnonLights() {
 
-    if(isfrontTurned==1) {
+    if (isfrontTurned == 1) {
         headLightLeftLight.visible = true;
         headLightRightLight.visible = true;
     }
-    else if(isfrontTurned==0) {
+    else if (isfrontTurned == 0) {
         headLightLeftLight.visible = false;
         headLightRightLight.visible = false;
     }
 
 }
-
+var ifPoliceLightTurned = false;
 function turnonPoliceLights() {
-    redlight.visible = true;
-    bluelight.visible = true;
+
+    if (ifPoliceLightTurned) {
+        redlight.visible = true;
+        bluelight.visible = true;
+    }
 }
 
 function turnoffPoliceLights() {
-    redlight.visible = false;
-    bluelight.visible = false;
 
+    if(!ifPoliceLightTurned) {
+        redlight.visible = false;
+        bluelight.visible = false;
+    }
 }

@@ -47,7 +47,7 @@ function pauseMenu() {
 function restartGame() {
     car.reset(); 
     resetTimer();
-    fuelLeft = 100;
+    fuelLeft = 200;
 
     // added in step 3
     if (currentScore > currentRecord) {

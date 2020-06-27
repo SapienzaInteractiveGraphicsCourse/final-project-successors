@@ -3,7 +3,7 @@
 /*
 *
 * Init functions  
-*
+* Add only used statically 
 */
 function init() {
 

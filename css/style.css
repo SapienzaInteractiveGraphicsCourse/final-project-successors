@@ -160,10 +160,6 @@ div.centeredDiv {
     border-radius: 5px;
 }
 
-#pausemenu h3 {
-
-}
-
 #instructionbutton {
     margin-left: 80px;
     margin-right: auto;
@@ -188,18 +184,6 @@ div.centeredDiv {
     margin-right: auto;
     border-radius: 10px;
     background-color: #fff;
-
-    /*
-    position:absolute;
-    width:50%;
-    top:30%;
-    left:2%;
-    margin: auto;
-
-
-    text-transform: uppercase;
-    text-align : left;
-    */
 }
 
 #close {
