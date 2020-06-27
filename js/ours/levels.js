@@ -47,7 +47,7 @@ function pauseMenu() {
 function restartGame() {
     car.reset(); 
     resetTimer();
-    fuelLeft = 200;
+    fuelLeft = 100;
 
     // added in step 3
     if (currentScore > currentRecord) {
@@ -158,7 +158,7 @@ getInstructions();
  * 
  */
 function updateFuelDisplay() {
-    console.log(fuelLeft);
+    //console.log(fuelLeft);
     //adding fuel to id
     document.getElementById('fuel').style.width = fuelLeft.toString() + '%'; //apply jquery too
 }
