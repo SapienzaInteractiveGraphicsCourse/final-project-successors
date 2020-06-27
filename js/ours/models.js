@@ -1,5 +1,5 @@
 
-var  trees = [], poles = [], trafficLight = [], collidableTrees = [], collidablePoles = [], collidableTrafficLight = [], numTrees = 1000, numPoles = 3,
+var fuelLeft, trees = [], poles = [], trafficLight = [], collidableTrees = [], collidablePoles = [], collidableTrafficLight = [], numTrees = 1000, numPoles = 3,
     collidableFuels = [], collidableBuildings = [], collidableBins=[], collidableCars=[], car, fuel, ground;
 
 /*

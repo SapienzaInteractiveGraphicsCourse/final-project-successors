@@ -19,22 +19,22 @@ function loop() {
     // else {
     //     //rainGeo.visible = false;
     // }
-    if(isRaining) {
+    if (isRaining) {
         rainGeo.visible = true;
-    rainGeo.vertices.forEach(r => {
-        r.velocity -=0.1 + Math.random() * 0.1;
-        r.y += r.velocity;
+        rainGeo.vertices.forEach(r => {
+            r.velocity -= 0.1 + Math.random() * 0.1;
+            r.y += r.velocity;
 
-        if(r.y < -200) {
-            r.y = 200;
-            r.velocity = 0;
-        }
-    });
-        
+            if (r.y < -200) {
+                r.y = 200;
+                r.velocity = 0;
+            }
+        });
 
-    rainGeo.verticesNeedUpdate = true;
-    rain.rotation.y += 0.002; // ROTATE THE RAIN IN Y DIRECTION
-    }else {
+
+        rainGeo.verticesNeedUpdate = true;
+        rain.rotation.y += 0.002; // ROTATE THE RAIN IN Y DIRECTION
+    } else {
         rainGeo.visible = false;
     }
 
@@ -49,17 +49,17 @@ function loop() {
     //stats is added here 
     var time = performance.now() / 1000;
 
-    context.clearRect( 0, 0, 512, 512 );
+    context.clearRect(0, 0, 512, 512);
 
     stats.begin();
 
-    for ( var i = 0; i < 2000; i ++ ) {
+    for (var i = 0; i < 2000; i++) {
 
-        var x = Math.cos( time + i * 0.01 ) * 196 + 256;
-        var y = Math.sin( time + i * 0.01234 ) * 196 + 256;
+        var x = Math.cos(time + i * 0.01) * 196 + 256;
+        var y = Math.sin(time + i * 0.01234) * 196 + 256;
 
         context.beginPath();
-        context.arc( x, y, 10, 0, Math.PI * 2, true );
+        context.arc(x, y, 10, 0, Math.PI * 2, true);
         context.fill();
 
     }
@@ -78,7 +78,10 @@ function loop() {
  */
 
 
-var isDayorNight = 0; 
+var isDayorNight = 0;
+var isBackwards = 0;
+var isnotBackwards = 0;
+var isfrontTurned = 0;
 function addControltoCar() {
     document.addEventListener(
         'keydown',
@@ -98,44 +101,62 @@ function addControltoCar() {
             }
             if (key == 40 || key == 83) {
                 car.moveCarBackward();
+                isBackwards = 1;
+                //back light on
+                //carBackLightsOn(); 
 
+                backLightOn = !backLightOn;
+                console.log("backlight is: ", backLightOn);
+
+                if(isBackwards=1) {
+                    carBackLightsOn();
+                    backLightLeft.intensity=1.0;
+                    backLightRight.intensity=1.0;
+                    isBackwards=0;
+
+                }
+                else if(isBackwards=0){
+                    backLightLeft.intensity = 0.;
+                    backLightRight.intensity = 0.;
+                    isBackwards=1;
+                }
             }
             if (key == 27) { // pause menu 
                 pauseMenu();
             }
-            if(key == 82) {
+            if (key == 82) {
                 //check if raining
                 isRaining = !isRaining;
                 console.log(isRaining);
             }
-            if(key == 73) {
+            if (key == 73) {
                 //instructions shown
                 instructionText();
-                isInstrShown = !isInstrShown; 
+                isInstrShown = !isInstrShown;
             }
 
             if (key == 72) { // if H is pushed 
                 //horn sound start 
                 createCarHornSound();
             }
-            if(key == 78) {
+            if (key == 78) {
                 //night or day
-                if(isDayorNight == 0) {
+                if (isDayorNight == 0) {
                     shadowLight.intensity = 0.9;
                     //redlight, bluelight, pointligghtPole, light;
-                    redlight.intensity=0.0;
-                    bluelight.intensity=0.0;
-                    pointligghtPole.intensity=0.0;
-                    light.intensity=0.0;
+                    redlight.intensity = 0.0;
+                    bluelight.intensity = 0.0;
+                    pointligghtPole.intensity = 0.0;
+                    light.intensity = 0.0;
                     WorldScene.style.setProperty("background", "#B9DBE3");
-                    isDayorNight=1;
+                    isDayorNight = 1;
                 }
-                else if(isDayorNight == 1) {
+                else if (isDayorNight == 1) {
                     shadowLight.intensity = 0.0;
-                    redlight.intensity=1.0;
-                    bluelight.intensity=1.0;
-                    pointligghtPole.intensity=1.0;
-                    light.intensity=1.0;
+                    redlight.intensity = 1.0;
+                    bluelight.intensity = 1.0;
+                    pointligghtPole.intensity = 1.0;
+                    light.intensity = 1.0;
                     WorldScene.style.setProperty("background", "#000");
                     isDayorNight = 0;
                 }
@@ -146,10 +167,22 @@ function addControltoCar() {
                 //car engine start 
                 createEngineStartSound();
             }
-            if(key == 76) {
-                turnoffLights();
+            if (key == 76) {
+                if(isfrontTurned == 1) {
+                    headLightLeftLight.intensity=1.0;
+                    headLightRightLight.intensity = 1.0;
+                    console.log("lights on");
+                    isfrontTurned = 0;
+                } 
+                else if(isfrontTurned == 0) {
+                    headLightLeftLight.intensity=0.0;
+                    headLightRightLight.intensity = 0.0;
+                    console.log("lights off");
+                    isfrontTurned=1;
+                }
+
             }
-            if(key == 80) {
+            if (key == 80) {
                 turnoffPoliceLights();
             }
         }
@@ -174,14 +207,26 @@ function addControltoCar() {
             }
             if (key == 40 || key == 83) {
                 car.stopCarBackward();
+                isnotBackwards=1;
+                if(isnotBackwards=1) {
+                    backLightLeft.intensity = 0.;
+                    backLightRight.intensity = 0.;
+                    isBackwards=1;
+                }
+                else if(isnotBackwards=0){
+                    carBackLightsOn();
+                    backLightLeft.intensity=1.0;
+                    backLightRight.intensity=1.0;
+                    isBackwards=0;
+                }
             }
             if (key == 72) {
                 // horn sound stop 
             }
-            if(key == 76) {
-                turnonLights();
+            if (key == 76) {
+                
             }
-            if(key == 80) {
+            if (key == 80) {
                 turnonPoliceLights();
             }
         }

@@ -168,14 +168,12 @@ function createObjectLights() {
     light.intensity=0.0;
 }
 
-var LightButtonPushedDown;
-function carBackLightsOn(ifPressed) {
-
-
-    if (ifPressed == true) {
-        var backLightLeft = new THREE.PointLight(0xff00000, 2, 100);
-        var backLightRight = new THREE.PointLight(0xff0000, 1, 100);
-
+var backLightOn = false;
+var backLightLeft, backLightRight;
+backLightLeft = new THREE.PointLight(0xff00000, 2, 100);
+backLightRight = new THREE.PointLight(0xff0000, 1, 100);
+function carBackLightsOn() {
+    if (backLightOn) {
         backLightLeft.castShadow = true;
         backLightRight.castShadow = true;
 
@@ -183,11 +181,6 @@ function carBackLightsOn(ifPressed) {
         backLightRight.position.set(-70, 5, 15);
         car.mesh.add(backLightLeft);
         car.mesh.add(backLightRight);
-
-    }
-    if (ifPressed == false) {
-        car.mesh.remove(backLightLeft);
-        car.mesh.remove(backLightRight);
     }
 }
 
@@ -299,14 +292,18 @@ function handleWindowResize() {
 }
 
 //adding lights for cars and police
-function turnoffLights() {
-    headLightLeftLight.visible = false;
-    headLightRightLight.visible = false;
-}
 
 function turnonLights() {
-    headLightLeftLight.visible = true;
-    headLightRightLight.visible = true;
+
+    if(isfrontTurned==1) {
+        headLightLeftLight.visible = true;
+        headLightRightLight.visible = true;
+    }
+    else if(isfrontTurned==0) {
+        headLightLeftLight.visible = false;
+        headLightRightLight.visible = false;
+    }
+
 }
 
 function turnonPoliceLights() {

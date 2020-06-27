@@ -27,6 +27,6 @@ function init() {
     addControltoCar();
 
     // reset game
-    resetGame();
+    restartGame();
     loop();
 }

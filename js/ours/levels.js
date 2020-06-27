@@ -11,7 +11,7 @@ function createLevel() {
     createBins();
     createCarV2();
     addTreestoScene();
-    startTimer();
+    restartTimer();
 }
 
 //ending levels 
@@ -21,8 +21,8 @@ function endLevel() {
     //endPoles();
     //endTrafficLights();
     //endBuildings();
-    removeTreesfromScene();
-    updateStatus();
+    removeTreesfromScene(); //still not sure if we need to respawn trees in different positions
+    updateGameStatus();
     stopTimer();
     setTimeout(createLevel, 100);
 }
@@ -44,26 +44,26 @@ function pauseMenu() {
 }
 
 
-function resetGame() {
-    car.reset();
+function restartGame() {
+    car.reset(); 
     resetTimer();
     fuelLeft = 100;
 
     // added in step 3
-    if (score > record) {
-        record = score;
-        window.localStorage.setItem('record', record);
+    if (currentScore > currentRecord) {
+        currentRecord = currentScore;
+        window.localStorage.setItem('record', currentRecord);
     }
-    score = 0;
+    currentScore = 0;
 
-    updateScoreDisplay();
-    updateRecordDisplay();
+    updatecurrentScoreDisplay();
+    updatecurrentRecordDisplay();
 }
 
 var time = 15;
 var timer;
 
-function startTimer() {
+function restartTimer() {
     time += 10;
     timer = setInterval(updateTimer, 1000);
 }
@@ -84,33 +84,31 @@ function updateTimer() {
         setTimeout(function () {
             $("#gameover").fadeOut(1000);
         }, 2000);
-        resetGame();
+        restartGame();
     }
 }
 
 function resetTimer() {
     stopTimer();
     //add the jquery element here to reset timers
-    startTimer();
+    restartTimer();
 }
 
 function stopTimer() {
     //add jquery instead of function 
-    clearInterval(timer);
+    clearInterval(timer);//clears the timer 
 }
 
-var fuelLeft;
-
-function updateStatus() {
+function updateGameStatus() {
     fuelLeft = Math.min(100, fuelLeft + 25);
     updateFuelDisplay();
-    score += 1;
-    updateScoreDisplay();
+    currentScore += 1;
+    updatecurrentScoreDisplay();
 }
 
 
-var score;
-var record = window.localStorage.getItem('record', 0);
+var currentScore;
+var currentRecord = window.localStorage.getItem('record', 0);
 
 
 function updateTimeDisplay() {
@@ -135,6 +133,7 @@ function instructionText() {
         $("#instructionText").append("<p>Press 'E' to enable car engine start sound</p>");
         $("#instructionText").append("<p>Press 'R' to enable rain&snow.</p>");
         $("#instructionText").append("<p>Press 'N' to enable day&night.</p>");
+        $("#instructionText").append("<p>Press 'L' to enable/disable car light.</p>");
         //$("#instructionText").append("<button id='close'>" + "Close" + "</button>");
         
         $("#close").click(function(){
@@ -151,18 +150,25 @@ function instructionText() {
 
 getInstructions();
 
+
+/**
+ * Fuel Display
+ * 
+ * NEXT FUNCTIONS ARE USED TO DISPLAY THE currentScore FUEL AND currentRecord FOR THE GAME
+ * 
+ */
 function updateFuelDisplay() {
     console.log(fuelLeft);
     //adding fuel to id
-    document.getElementById('fuel').style.width = fuelLeft.toString() + '%';
+    document.getElementById('fuel').style.width = fuelLeft.toString() + '%'; //apply jquery too
 }
 
-function updateScoreDisplay() {
-    $("#score").html(score);
+function updatecurrentScoreDisplay() {
+    $("#score").html(currentScore);
 }
 
-function updateRecordDisplay() {
-    $("#record").html(record);
+function updatecurrentRecordDisplay() {
+    $("#record").html(currentRecord);
 }
 
 
